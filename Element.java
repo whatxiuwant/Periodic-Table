@@ -42,4 +42,15 @@ public class Element {
 	public boolean getMetal() {
 		return metal;
 	}
+	
+	public String toString() {
+		String element = "";
+		element += "Name: " + name + ",\nAtomic Number: " + atomicNumber + ",\nSymbol: " + symbol + ",\nAtomic Weight: " + atomicWeight + ",\nMost Stable Oxidation State: " + mSOS + ",\nFamily: " + family + ",\nMetal: ";
+		if (metal == true)
+			element += "metal";
+		else
+			element += "nonmetal";
+		
+		return element;
+	}
 }

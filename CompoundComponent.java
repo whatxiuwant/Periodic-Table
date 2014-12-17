@@ -3,10 +3,12 @@ package ptpkg;
 public class CompoundComponent {
 	private String symbol;		//C in C6
 	private int frequency;		//6 in C6
+	private PeriodicTable pt;
 	
-	public CompoundComponent(PeriodicTable table, String name, int frequency) {
-		symbol = "" + table.getElement(name);
+	public CompoundComponent(String name, int frequency, PeriodicTable pt) {
+		symbol = "" + pt.getElement(name, "symbol");
 		this.frequency = frequency;
+		this.pt = pt;
 	}
 	
 	public String getSymbol() {
@@ -16,8 +18,14 @@ public class CompoundComponent {
 	public int getFrequency() {
 		return frequency;
 	}
+
+	public PeriodicTable getPt() {
+		return pt;
+	}
 	
 	public String toString() {
 		return symbol + frequency;
 	}
+	
+	//molecular weight of the compound
 }

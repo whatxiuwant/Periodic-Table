@@ -1,32 +1,34 @@
 package ptpkg;
 import java.awt.*;
+
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
+
 import java.io.*;
 import java.util.*;
 
 public class PeriodicTableReader {
 	public static void main(String[] args) throws IOException {
 		File input = new File("Elements.csv");
-		Scanner scan = new Scanner(input);
+		Scanner scanCount = new Scanner(input);
 		
 		int count = 0;
-		while (scan.hasNextLine()) {
-			scan.nextLine();
+		while (scanCount.hasNextLine()) {
+			scanCount.nextLine();
 			count++;
 		}
 		
-		scan.close();
+		scanCount.close();
 		
-		Scanner scan2 = new Scanner(input);
+		Scanner scanElement = new Scanner(input);
 		
 		PeriodicTable table = new PeriodicTable(count);
 		int i = 0;
 		String[] elementData = new String[7];
 		String n, s, f; int aN, mSOS; double aW; boolean m;
 		
-		while (scan2.hasNextLine()) {
-			elementData = scan2.nextLine().split(",");
+		while (scanElement.hasNextLine()) {
+			elementData = scanElement.nextLine().split(",");
 			
 			n = elementData[0];
 			aN = Integer.parseInt(elementData[1]);
@@ -46,7 +48,7 @@ public class PeriodicTableReader {
 			table.push(i, e);
 			i++;
 		}
-
+		/*
 		System.out.println(table.getElement("helium"));
 		System.out.println(table.getElement("helium", "name"));
 		System.out.println(table.getElement("helium", "atomicnumber"));
@@ -60,11 +62,39 @@ public class PeriodicTableReader {
 		UIManager.put("OptionPane.messageFont", new FontUIResource(new Font("SanSerif", Font.PLAIN, 20)));
 		UIManager.put("OptionPane.messageForeground", Color.BLACK);
 		JOptionPane.showMessageDialog(null, table.getElement(10).toString());
+		*/
+		scanElement.close();
 		
-		scan2.close();
+	//	CompoundComponent cc = new CompoundComponent("carbon", 6, table);
+	//	Compound compound = new Compound(cc);
+	//	System.out.println(cc.toString());
 		
-		CompoundComponent cc = new CompoundComponent(table, carbon, 6);
-		Compound compound = new Compound(cc);
-		System.out.println(cc.toString());
+		Scanner scanCompound = new Scanner(System.in);
+		System.out.println("Enter your chemical compound: ");
+		String compText = scanCompound.nextLine();
+		
+		ArrayList<Integer> idx = new ArrayList<Integer>();
+		
+		for (int j = 0; j < compText.length(); j++)
+			if (compText.charAt(j) >= 'A' && compText.charAt(j) <= 'Z')
+				idx.add(j);
+
+		ArrayList<String> compoundStrs = new ArrayList<String>();
+		int end = 0;
+		for (int j = 0; j < idx.size(); j++) {
+			if (j == idx.size() - 1)
+				end = compText.length();
+			else
+				end = idx.get(j + 1);
+
+			compoundStrs.add(compText.substring(idx.get(j), end));
+		}
+		CompoundComponent cc;
+		Compound compound = new Compound();
+		for (int j = 0; j < compoundStrs.size(); j++) {
+			cc = new CompoundComponent("N", Integer.parseInt(compoundStrs.get(i)), table);
+			compound.addCompound(cc);
+		}
+		System.out.println(compoundStrs);
 	}
 }

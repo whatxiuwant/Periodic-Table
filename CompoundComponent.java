@@ -16,4 +16,8 @@ public class CompoundComponent {
 	public int getFrequency() {
 		return frequency;
 	}
+	
+	public String toString() {
+		return symbol + frequency;
+	}
 }

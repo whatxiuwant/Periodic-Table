@@ -62,5 +62,9 @@ public class PeriodicTableReader {
 		JOptionPane.showMessageDialog(null, table.getElement(10).toString());
 		
 		scan2.close();
+		
+		CompoundComponent cc = new CompoundComponent(table, carbon, 6);
+		Compound compound = new Compound(cc);
+		System.out.println(cc.toString());
 	}
 }

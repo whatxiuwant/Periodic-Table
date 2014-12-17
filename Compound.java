@@ -7,4 +7,8 @@ public class Compound {
 	public Compound(CompoundComponent c) {
 		compound.add(c);
 	}
+	
+	public ArrayList<CompoundComponent> getCompoundComponent() {
+		return compound;
+	}
 }

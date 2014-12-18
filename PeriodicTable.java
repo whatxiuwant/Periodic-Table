@@ -36,6 +36,11 @@ public class PeriodicTable {
 				if (table[i].getName().equalsIgnoreCase(name))
 					return table[i].getName();
 		
+		//for (Element e : table)
+		//	if (e.getSymbol().equals(symbol))
+		//		return e;
+		//	return null;
+		
 		if (value.equalsIgnoreCase("atomicNumber"))
 			for (int i = 0; i < length; i++)
 				if (table[i].getName().equalsIgnoreCase(name))
@@ -70,5 +75,13 @@ public class PeriodicTable {
 						return "nonmetal";
 		
 		return "not found";
+	}
+	
+	public String toString() {
+		String display = "";
+		for (int i = 0; i < table.length; i++)
+			display += "\n" + table[i];
+		
+		return display;
 	}
 }

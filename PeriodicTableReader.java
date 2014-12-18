@@ -48,6 +48,7 @@ public class PeriodicTableReader {
 			table.push(i, e);
 			i++;
 		}
+		System.out.println(table);
 		/*
 		System.out.println(table.getElement("helium"));
 		System.out.println(table.getElement("helium", "name"));
@@ -70,9 +71,9 @@ public class PeriodicTableReader {
 	//	System.out.println(cc.toString());
 		
 		Scanner scanCompound = new Scanner(System.in);
-		System.out.println("Enter your chemical compound: ");
+		System.out.println("Enter the chemical compound formula: ");
 		String compText = scanCompound.nextLine();
-		
+	//	make method
 		ArrayList<Integer> idx = new ArrayList<Integer>();
 		
 		for (int j = 0; j < compText.length(); j++)
@@ -89,12 +90,29 @@ public class PeriodicTableReader {
 
 			compoundStrs.add(compText.substring(idx.get(j), end));
 		}
-		CompoundComponent cc;
+		
+		System.out.println(compoundStrs);
+		
 		Compound compound = new Compound();
+		
 		for (int j = 0; j < compoundStrs.size(); j++) {
-			cc = new CompoundComponent("N", Integer.parseInt(compoundStrs.get(i)), table);
+	//		CompoundComponent cc = new CompoundComponent(compoundStrs.get(j).substring(0, getSymbol(compoundStrs.get(j))), Integer.parseInt(compoundStrs.get(j)), table);
+			CompoundComponent cc = new CompoundComponent("Nitrogen", Integer.parseInt(compoundStrs.get(j)), table);
 			compound.addCompound(cc);
 		}
-		System.out.println(compoundStrs);
+		for (int j = 0; j < compound.getSize(); j++)
+			System.out.println(compound.getCompound(j));
+		
+		scanCompound.close();
+	//	only alphanumerics, no consecutive lowercase
+	}
+
+	public static int getSymbol(String s) {
+		int idx = 0;
+		for (int i = 0; i < s.length(); i++)
+			if (s.indexOf(i) >= 0)
+				idx++;
+		
+		return idx;
 	}
 }

@@ -9,6 +9,8 @@ public class CompoundComponent {
 		symbol = "" + pt.getElement(name, "symbol");
 		this.frequency = frequency;
 		this.pt = pt;
+		
+		//change name to symbol
 	}
 	
 	public String getSymbol() {
@@ -27,5 +29,8 @@ public class CompoundComponent {
 		return symbol + frequency;
 	}
 	
-	//molecular weight of the compound
+	public double weight() {
+		Element e = pt.getElement("symbol");
+		return e.getAtomicWeight() * frequency;
+	}
 }

@@ -45,12 +45,34 @@ public class Element {
 	
 	public String toString() {
 		String element = "";
-		element += "Name: " + name + ",\nAtomic Number: " + atomicNumber + ",\nSymbol: " + symbol + ",\nAtomic Weight: " + atomicWeight + ",\nMost Stable Oxidation State: " + mSOS + ",\nFamily: " + family + ",\nMetal: ";
-		if (metal == true)
-			element += "metal";
+		String metalString = "";
+		if (atomicNumber < 100)
+			element += getSpaces(1) + atomicNumber;
+		else if (atomicNumber < 10)
+			element += getSpaces(2) + atomicNumber;
 		else
-			element += "nonmetal";
+			element += atomicNumber;
+		
+		if (metal == true)
+			metalString = "M";
+		else
+			metalString = "N";
+		
+		element += getSpaces(5) + name;
+		element += getSpaces(20 - name.length()) + symbol;
+		element += getSpaces(10 - symbol.length()) + atomicWeight;
+		element += getSpaces(15 - ("" + atomicWeight).length()) + mSOS;
+		element += getSpaces(10 - ("" + mSOS).length()) + family;
+		element += getSpaces(30 - family.length()) + metalString;
 		
 		return element;
+	}
+	
+	public String getSpaces(int length) {
+		String spaces = "";
+		for (int i = 0; i < length; i++)
+			spaces += " ";
+		
+		return spaces;
 	}
 }

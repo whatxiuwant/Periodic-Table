@@ -48,7 +48,7 @@ public class PeriodicTableReader {
 			table.push(i, e);
 			i++;
 		}
-		System.out.println(table);
+	//	System.out.println(table);
 		/*
 		System.out.println(table.getElement("helium"));
 		System.out.println(table.getElement("helium", "name"));
@@ -65,54 +65,5 @@ public class PeriodicTableReader {
 		JOptionPane.showMessageDialog(null, table.getElement(10).toString());
 		*/
 		scanElement.close();
-		
-	//	CompoundComponent cc = new CompoundComponent("carbon", 6, table);
-	//	Compound compound = new Compound(cc);
-	//	System.out.println(cc.toString());
-		
-		Scanner scanCompound = new Scanner(System.in);
-		System.out.println("Enter the chemical compound formula: ");
-		String compText = scanCompound.nextLine();
-	//	make method
-		ArrayList<Integer> idx = new ArrayList<Integer>();
-		
-		for (int j = 0; j < compText.length(); j++)
-			if (compText.charAt(j) >= 'A' && compText.charAt(j) <= 'Z')
-				idx.add(j);
-
-		ArrayList<String> compoundStrs = new ArrayList<String>();
-		int end = 0;
-		for (int j = 0; j < idx.size(); j++) {
-			if (j == idx.size() - 1)
-				end = compText.length();
-			else
-				end = idx.get(j + 1);
-
-			compoundStrs.add(compText.substring(idx.get(j), end));
-		}
-		
-		System.out.println(compoundStrs);
-		
-		Compound compound = new Compound();
-		
-		for (int j = 0; j < compoundStrs.size(); j++) {
-	//		CompoundComponent cc = new CompoundComponent(compoundStrs.get(j).substring(0, getSymbol(compoundStrs.get(j))), Integer.parseInt(compoundStrs.get(j)), table);
-			CompoundComponent cc = new CompoundComponent("Nitrogen", Integer.parseInt(compoundStrs.get(j)), table);
-			compound.addCompound(cc);
-		}
-		for (int j = 0; j < compound.getSize(); j++)
-			System.out.println(compound.getCompound(j));
-		
-		scanCompound.close();
-	//	only alphanumerics, no consecutive lowercase
-	}
-
-	public static int getSymbol(String s) {
-		int idx = 0;
-		for (int i = 0; i < s.length(); i++)
-			if (s.indexOf(i) >= 0)
-				idx++;
-		
-		return idx;
 	}
 }

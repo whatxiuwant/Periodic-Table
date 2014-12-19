@@ -5,8 +5,8 @@ public class CompoundComponent {
 	private int frequency;		//6 in C6
 	private PeriodicTable pt;
 	
-	public CompoundComponent(String name, int frequency, PeriodicTable pt) {
-		symbol = "" + pt.getElement(name, "symbol");
+	public CompoundComponent(String symbol, int frequency, PeriodicTable pt) {
+		this.symbol = symbol;
 		this.frequency = frequency;
 		this.pt = pt;
 		

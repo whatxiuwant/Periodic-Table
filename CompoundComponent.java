@@ -29,8 +29,8 @@ public class CompoundComponent {
 		return symbol + frequency;
 	}
 	
-	public double weight() {
-		Element e = pt.getElement("symbol");
+	public double weight(String sym) {
+		Element e = pt.getElement(sym);
 		return e.getAtomicWeight() * frequency;
 	}
 }

@@ -22,9 +22,9 @@ public class PeriodicTable {
 	}
 
 
-	public Element getElement(String name) {
+	public Element getElement(String sym) {
 		for (int i = 0; i < length; i++)
-			if (table[i].getName().equalsIgnoreCase(name))
+			if (table[i].getSymbol().equalsIgnoreCase(sym))
 				return table[i];
 		
 		return table[-999];
@@ -36,14 +36,11 @@ public class PeriodicTable {
 				if (table[i].getName().equalsIgnoreCase(name))
 					return table[i].getName();
 		
-<<<<<<< HEAD
-=======
 		//for (Element e : table)
 		//	if (e.getSymbol().equals(symbol))
 		//		return e;
 		//	return null;
 		
->>>>>>> FETCH_HEAD
 		if (value.equalsIgnoreCase("atomicNumber"))
 			for (int i = 0; i < length; i++)
 				if (table[i].getName().equalsIgnoreCase(name))
@@ -79,8 +76,6 @@ public class PeriodicTable {
 		
 		return "not found";
 	}
-<<<<<<< HEAD
-=======
 	
 	public String toString() {
 		String display = "";
@@ -89,5 +84,4 @@ public class PeriodicTable {
 		
 		return display;
 	}
->>>>>>> FETCH_HEAD
 }

@@ -1,33 +1,13 @@
 package ptpkg;
 import java.awt.*;
-<<<<<<< HEAD
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
-=======
-
-import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
-
->>>>>>> FETCH_HEAD
 import java.io.*;
 import java.util.*;
 
 public class PeriodicTableReader {
 	public static void main(String[] args) throws IOException {
 		File input = new File("Elements.csv");
-<<<<<<< HEAD
-		Scanner scan = new Scanner(input);
-		
-		int count = 0;
-		while (scan.hasNextLine()) {
-			scan.nextLine();
-			count++;
-		}
-		
-		scan.close();
-		
-		Scanner scan2 = new Scanner(input);
-=======
 		Scanner scanCount = new Scanner(input);
 		
 		int count = 0;
@@ -39,20 +19,14 @@ public class PeriodicTableReader {
 		scanCount.close();
 		
 		Scanner scanElement = new Scanner(input);
->>>>>>> FETCH_HEAD
 		
 		PeriodicTable table = new PeriodicTable(count);
 		int i = 0;
 		String[] elementData = new String[7];
 		String n, s, f; int aN, mSOS; double aW; boolean m;
 		
-<<<<<<< HEAD
-		while (scan2.hasNextLine()) {
-			elementData = scan2.nextLine().split(",");
-=======
 		while (scanElement.hasNextLine()) {
 			elementData = scanElement.nextLine().split(",");
->>>>>>> FETCH_HEAD
 			
 			n = elementData[0];
 			aN = Integer.parseInt(elementData[1]);
@@ -72,31 +46,11 @@ public class PeriodicTableReader {
 			table.push(i, e);
 			i++;
 		}
-<<<<<<< HEAD
-
-=======
-	//	System.out.println(table);
-		/*
->>>>>>> FETCH_HEAD
-		System.out.println(table.getElement("helium"));
-		System.out.println(table.getElement("helium", "name"));
-		System.out.println(table.getElement("helium", "atomicnumber"));
-		System.out.println(table.getElement("helium", "symbol"));
-		System.out.println(table.getElement("helium", "atomicWeight"));
-		System.out.println(table.getElement("helium", "mostStableOxidationState"));
-		System.out.println(table.getElement("helium", "family"));
-		System.out.println(table.getElement("helium", "metal"));
-		System.out.println(table.getElement(0).toString());
 		
 		UIManager.put("OptionPane.messageFont", new FontUIResource(new Font("SanSerif", Font.PLAIN, 20)));
 		UIManager.put("OptionPane.messageForeground", Color.BLACK);
 		JOptionPane.showMessageDialog(null, table.getElement(10).toString());
-<<<<<<< HEAD
 		
-		scan2.close();
-=======
-		*/
 		scanElement.close();
->>>>>>> FETCH_HEAD
 	}
 }

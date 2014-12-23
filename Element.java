@@ -45,16 +45,6 @@ public class Element {
 	
 	public String toString() {
 		String element = "";
-<<<<<<< HEAD
-		element += "Name: " + name + ",\nAtomic Number: " + atomicNumber + ",\nSymbol: " + symbol + ",\nAtomic Weight: " + atomicWeight + ",\nMost Stable Oxidation State: " + mSOS + ",\nFamily: " + family + ",\nMetal: ";
-		if (metal == true)
-			element += "metal";
-		else
-			element += "nonmetal";
-		
-		return element;
-	}
-=======
 		String metalString = "";
 		if (atomicNumber < 100)
 			element += getSpaces(1) + atomicNumber;
@@ -85,5 +75,4 @@ public class Element {
 		
 		return spaces;
 	}
->>>>>>> FETCH_HEAD
 }

@@ -12,8 +12,16 @@ public class Compound {
 		return compound.size();
 	}
 	
-	public String getCompound(int idx) {
-		return compound.get(idx).getSymbol() + compound.get(idx).getFrequency();
+	public CompoundComponent getCompound(int idx) {
+		return compound.get(idx);
+	}
+	
+	public String toString() {
+		String display = "";
+		for (int i = 0; i < compound.size(); i++)
+			display += compound.get(i).getSymbol() + compound.get(i).getFrequency();
+		
+		return display;
 	}
 	
 	public ArrayList<CompoundComponent> getCompound() {
@@ -27,7 +35,7 @@ public class Compound {
 	public double getMolecularWeight() {
 		double weight = 0;
 		for (CompoundComponent cc : compound)
-			weight += cc.weight();
+			weight += cc.weight(cc.getSymbol());
 		
 		return weight;
 	}

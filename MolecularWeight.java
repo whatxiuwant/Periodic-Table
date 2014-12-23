@@ -7,6 +7,7 @@ public class MolecularWeight {
 		Scanner scanCompound = new Scanner(System.in);
 		System.out.println("Enter the chemical compound formula: ");
 		String compText = scanCompound.nextLine();
+		compText = compText.toUpperCase();
 	//	make method
 		ArrayList<Integer> idx = new ArrayList<Integer>();
 		
@@ -28,16 +29,26 @@ public class MolecularWeight {
 		System.out.println(compoundStrs);
 		
 		Compound compound = new Compound();
+		CompoundComponent cc;
 		
 		for (int j = 0; j < compoundStrs.size(); j++) {
-			CompoundComponent cc = new CompoundComponent(compoundStrs.get(j).substring(0, getFreq(compoundStrs.get(j))), Integer.parseInt(compoundStrs.get(j).substring(getFreq(compoundStrs.get(j)))), getTable());
+			if (getFreq(compoundStrs.get(j)) == 0)
+				cc = new CompoundComponent(compoundStrs.get(j), 1, getTable());
+			else
+				cc = new CompoundComponent(compoundStrs.get(j).substring(0, getFreq(compoundStrs.get(j))), Integer.parseInt(compoundStrs.get(j).substring(getFreq(compoundStrs.get(j)))), getTable());
 			compound.addCompound(cc);
 		}
 		
 		for (int i = 0; i < compound.getSize(); i++)
 			System.out.println(compound.getCompound(i));
 		
-		System.out.println(compound.getCompound(0).weight());
+		double weight = 0;
+		
+		for (int i = 0; i < compound.getSize(); i++)
+			weight += compound.getCompound(i).weight(compound.getCompound(i).getSymbol());
+		
+		System.out.println(compound);
+		System.out.println(weight);
 		
 		scanCompound.close();
 	}

@@ -1,7 +1,4 @@
 package ptpkg;
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
 import java.io.*;
 import java.util.*;
 
@@ -47,10 +44,16 @@ public class PeriodicTableReader {
 			i++;
 		}
 		
-		UIManager.put("OptionPane.messageFont", new FontUIResource(new Font("SanSerif", Font.PLAIN, 20)));
-		UIManager.put("OptionPane.messageForeground", Color.BLACK);
-		JOptionPane.showMessageDialog(null, table.getElement(10).toString());
-		
 		scanElement.close();
+		table.sortByName();
+		System.out.println(table);
+		table.sortByAtomicWeight(true);
+		System.out.println(table);
+		table.sortByAtomicWeight(false);
+		System.out.println(table);
+		table.sortByAtomicNumber();
+		System.out.println(table);
+		table.sortBySymbol();
+		System.out.println(table);
 	}
 }

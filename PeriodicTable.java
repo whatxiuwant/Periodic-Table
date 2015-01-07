@@ -22,9 +22,9 @@ public class PeriodicTable {
 	}
 
 
-	public Element getElement(String sym) {
+	public Element getElement(String name) {
 		for (int i = 0; i < length; i++)
-			if (table[i].getSymbol().equalsIgnoreCase(sym))
+			if (table[i].getSymbol().equalsIgnoreCase(name))
 				return table[i];
 		
 		return table[-999];
@@ -48,7 +48,7 @@ public class PeriodicTable {
 		
 		if (value.equalsIgnoreCase("symbol"))
 			for (int i = 0; i < length; i++)
-				if (table[i].getName().equalsIgnoreCase(name))
+				if (table[i].getSymbol().equalsIgnoreCase(name))
 					return table[i].getSymbol();
 		
 		if (value.equalsIgnoreCase("atomicWeight"))
@@ -75,6 +75,62 @@ public class PeriodicTable {
 						return "nonmetal";
 		
 		return "not found";
+	}
+	
+	public void sortByName() {
+		for (int j = 0; j < table.length - 1; j++) {
+			int minIndex = j;
+			for (int k = j + 1; k < table.length; k++) 
+				if (table[k].getName().compareTo(table[minIndex].getName()) < 0)
+					minIndex = k;
+			swap(j, minIndex);
+		}
+	}
+	
+	public void sortByAtomicWeight(boolean asc) {
+		if (asc == true) {
+			for (int j = 0; j < table.length - 1; j++) {
+				int minIndex = j;
+				for (int k = j + 1; k < table.length; k++) 
+					if (table[k].getAtomicWeight() < table[minIndex].getAtomicWeight())
+						minIndex = k;
+				swap(j, minIndex);
+		}}
+		
+		if (asc == false) {
+			for (int j = 0; j < table.length - 1; j++) {
+				int minIndex = j;
+				for (int k = j + 1; k < table.length; k++) 
+					if (table[k].getAtomicWeight() > table[minIndex].getAtomicWeight())
+						minIndex = k;
+				swap(j, minIndex);
+		}}
+	}
+	
+	public void sortByAtomicNumber() {
+		for (int j = 0; j < table.length - 1; j++) {
+			int minIndex = j;
+			for (int k = j + 1; k < table.length; k++) 
+				if (table[k].getAtomicNumber() < table[minIndex].getAtomicNumber())
+					minIndex = k;
+			swap(j, minIndex);
+		}
+	}
+	
+	public void sortBySymbol() {
+		for (int j = 0; j < table.length - 1; j++) {
+			int minIndex = j;
+			for (int k = j + 1; k < table.length; k++) 
+				if (table[k].getSymbol().compareTo(table[minIndex].getSymbol()) < 0)
+					minIndex = k;
+			swap(j, minIndex);
+		}
+	}
+	
+	public void swap(int j, int k) {
+		Element temp = table[j];
+		table[j] = table[k];
+		table[k] = temp;
 	}
 	
 	public String toString() {
